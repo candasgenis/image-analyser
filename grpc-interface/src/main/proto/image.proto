@@ -1,0 +1,65 @@
+
+syntax = "proto3";
+option java_multiple_files = true;
+package com.example;
+option java_package = "com.example";
+
+message Image {
+  int32 image_id = 1;
+  string image_url = 2;
+  string joy_likelihood = 3;
+  string sorrow_likelihood = 4;
+  string anger_likelihood = 5;
+  string surprise_likelihood = 6;
+  string under_exposed_likelihood = 7;
+  string blurred_likelihood = 8;
+  string headwear_likelihood = 9;
+  float created_at = 10;
+  float updated_at = 11;
+}
+
+message GetImageDetailRequest {
+  string image_url = 1;
+}
+
+message GetImageDetailResponse {
+  Image image = 2;
+}
+
+message GetImageFeedRequest {
+  string parent = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+}
+
+message GetImageFeedResponse {
+  repeated Image images = 1;
+  string next_page_token = 2;
+}
+
+message UploadImageRequest {
+  string image_url = 1;
+}
+
+message UploadImageResponse {
+  bool success = 1;
+}
+
+message UpdateImageRequest {
+  Image image = 1;
+}
+
+message UpdateImageResponse {
+  bool success = 1;
+}
+
+service ImageService {
+
+  //unary - synchronous
+  //client will send one request and server will respond with one response.
+  rpc getImageDetail(GetImageDetailRequest) returns(GetImageDetailResponse){}
+  rpc uploadImage(UploadImageRequest) returns(UploadImageResponse){}
+  rpc getImageFeed(GetImageFeedRequest) returns(GetImageFeedResponse){}
+  rpc updateImage(UpdateImageRequest) returns(UpdateImageResponse){}
+
+  }
