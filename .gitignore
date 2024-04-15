@@ -1,4 +1,5 @@
 HELP.md
+grpc-service/src/main/resources/static/boxwood-yen-416420-430b23f99e2c.json
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
