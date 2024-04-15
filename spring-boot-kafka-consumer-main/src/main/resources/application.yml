@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: producer-app
+  kafka:
+    auto-offset-reset: latest
+    bootstrap-servers: localhost:9092
+    group-id: image-consumer-group
+    topic:
+      name: image-topic
+server:
+  port: 9293
