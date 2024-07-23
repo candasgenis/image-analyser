@@ -1,0 +1,18 @@
+#spring.cloud.gcp.credentials.location=file:C:/Users/canda/IntellijIDEA Projects/image-analyser/grpc-service/src/main/resources/static/boxwood-yen-416420-430b23f99e2c.json
+spring:
+  application:
+    name: producer-app
+  datasource:
+    url: jdbc:mysql://localhost:3306/imageanalyser
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      topic: image-topic
+grpc:
+  server:
+    port: 9000
+server:
+  port: 9292

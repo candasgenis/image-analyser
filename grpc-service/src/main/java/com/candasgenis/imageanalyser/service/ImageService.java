@@ -1,6 +1,5 @@
 package com.candasgenis.imageanalyser.service;
 
-import com.candasgenis.imageanalyser.service.KafkaProducerService;
 import com.example.*;
 //import com.google.cloud.spring.vision.CloudVisionTemplate;
 //import com.google.cloud.vision.v1.AnnotateImageResponse;
@@ -10,8 +9,6 @@ import io.grpc.stub.StreamObserver;
 import net.devh.boot.grpc.server.service.GrpcService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
-
-import java.util.List;
 
 @GrpcService
 public class ImageService extends ImageServiceGrpc.ImageServiceImplBase{
@@ -39,6 +36,9 @@ public class ImageService extends ImageServiceGrpc.ImageServiceImplBase{
             service.sendMessage(String.format("[%d] -- Hello World", i));
         }
         System.out.println("Kafka log sent...");
+        UploadImageResponse.Builder builder = UploadImageResponse.newBuilder();
+        responseObserver.onNext(builder.setSuccess(true).build());
+        responseObserver.onCompleted();
 //
 //        AnnotateImageResponse response =
 //                this.cloudVisionTemplate.analyzeImage(
